@@ -20,14 +20,14 @@ func main() {
 	// Connect to the demo server
 	page := rod.New().MustConnect().MustPage("https://demo.defectdojo.org/")
 
+	time.Sleep(time.Second * 5)
+
 	// Login via the login page
 	page.MustElement("#id_username").MustInput("admin")
 	page.MustElement("#id_password").MustInput("defectdojo@demo#appsec")
-	fmt.Println("Before login button")
 	// CSS selector without the login banner turned on
 	// #base-content > form > fieldset > div:nth-child(3) > div.col-sm-offset-1.col-sm-1 > button
 	page.MustElement("#base-content > form > fieldset > div:nth-child(4) > div.col-sm-offset-1.col-sm-1 > button").MustClick()
-	fmt.Println("After login button")
 
 	// Click on the user side menu - #side-menu > li:nth-child(9) > a > i
 	page.MustElement("#side-menu > li:nth-child(9) > a > i").MustClick()
@@ -49,18 +49,22 @@ func main() {
 	page.MustElement("#base-content > form > div > div > input").MustClick()
 
 	// Get new user ID
-	usrURL, err := page.Info()
+	pageInfo, err := page.Info()
 	if err != nil {
 		fmt.Printf("Error getting page info was:\n%+v\n", err)
 		os.Exit(1)
 	}
-	uid, err := userFromURL(usrURL.URL)
+
+	fmt.Printf("Page info is:\n\t%+v\n", pageInfo)
+	// https://demo.defectdojo.org/user/add
+
+	uid, err := userFromURL(pageInfo.URL)
 	if err != nil {
 		fmt.Printf("Error getting the user's ID from the URL was:\n%+v\n", err)
 		os.Exit(1)
 	}
 
-	fmt.Printf("Page info is:\n\t%+v\n", usrURL)
+	fmt.Printf("Page info is:\n\t%+v\n", pageInfo)
 	fmt.Printf("uid is %+v\n", uid)
 
 	// TODO: Set the user's password via Django admin
