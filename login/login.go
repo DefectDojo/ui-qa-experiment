@@ -113,6 +113,10 @@ func (l *DDLogin) NewSession() error {
 	return nil
 }
 
+// SetAndLogin is used to set the necessary values to login to DefectDojo using Rod.
+// It takes three strings: a URL (u), a username (usr) and a password (p) and two
+// booleans: b should be set to true if the login banner is on and d should be set
+// to true if you want a 5 second delay before clicking the login button (for debug)
 func (l *DDLogin) SetAndLogin(u, usr, p string, b, d bool) error {
 	l.SetURL(u)
 	l.SetUsername(usr)
