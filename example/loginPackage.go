@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/go-rod/rod"
+	ddl "github.com/mtesauro/dd-login"
 )
 
 // Good references:
@@ -17,39 +17,39 @@ import (
 // https://pkg.go.dev/github.com/go-rod/rod#Mouse
 
 func main() {
-	// Connect to the demo server
-	page := rod.New().MustConnect().MustPage("https://demo.defectdojo.org/")
+	// Login and start a session with DefectDojo
+	var sess ddl.DDLogin
+	err := sess.SetAndLogin("https://demo.defectdojo.org/", "admin", "defectdojo@demo#appsec", true, true)
+	if err != nil {
+		fmt.Printf("Error logging into DefectDojo. Error was:\n\t%+v\n", err)
+	}
 
-	time.Sleep(time.Second * 5)
+	// Make a shorter name for sess.Page
+	p := *sess.Page
 
-	// Login via the login page
-	page.MustElement("#id_username").MustInput("admin")
-	page.MustElement("#id_password").MustInput("defectdojo@demo#appsec")
-	// CSS selector without the login banner turned on
-	// #base-content > form > fieldset > div:nth-child(3) > div.col-sm-offset-1.col-sm-1 > button
-	page.MustElement("#base-content > form > fieldset > div:nth-child(4) > div.col-sm-offset-1.col-sm-1 > button").MustClick()
+	// We should now be on the main DefectDojo page aka /dashboard
 
 	// Click on the user side menu - #side-menu > li:nth-child(9) > a > i
-	page.MustElement("#side-menu > li:nth-child(9) > a > i").MustClick()
+	p.MustElement("#side-menu > li:nth-child(9) > a > i").MustClick()
 
 	// Click on the wrench - #dropdownMenu1 > span.fa.fa-wrench
-	page.MustElement("#dropdownMenu1 > span.fa.fa-wrench").MustClick()
+	p.MustElement("#dropdownMenu1 > span.fa.fa-wrench").MustClick()
 
 	// Click on "Add user" - #base-content > div > div > div:nth-child(1) > div.panel-heading.tight > h3 > div > ul > li > a
-	page.MustElement("#base-content > div > div > div:nth-child(1) > div.panel-heading.tight > h3 > div > ul > li > a").MustClick()
+	p.MustElement("#base-content > div > div > div:nth-child(1) > div.panel-heading.tight > h3 > div > ul > li > a").MustClick()
 
 	// Fill out the User form
 	// Username - #id_username
-	page.MustElement("#id_username").MustInput("mario")
-	page.MustElement("#id_first_name").MustInput("Mario")
-	page.MustElement("#id_last_name").MustInput("Plumber")
-	page.MustElement("#id_email").MustInput("mario@pipeline.pvt")
-	page.MustElement("#id_is_staff").MustClick()
+	p.MustElement("#id_username").MustInput("bross-da-boss")
+	p.MustElement("#id_first_name").MustInput("Bob")
+	p.MustElement("#id_last_name").MustInput("Ross")
+	p.MustElement("#id_email").MustInput("bob.ross@happytrees.com")
+	p.MustElement("#id_is_staff").MustClick()
 	// Click on the form's button
-	page.MustElement("#base-content > form > div > div > input").MustClick()
+	p.MustElement("#base-content > form > div > div > input").MustClick()
 
 	// Get new user ID
-	pageInfo, err := page.Info()
+	pageInfo, err := p.Info()
 	if err != nil {
 		fmt.Printf("Error getting page info was:\n%+v\n", err)
 		os.Exit(1)
