@@ -1,4 +1,4 @@
-module gitub.com/DefectDojo/ui-qa-experiment/login
+module github.com/DefectDojo/ui-qa-experiment/login
 
 go 1.16
 
