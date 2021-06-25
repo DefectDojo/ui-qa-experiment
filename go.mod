@@ -1,4 +1,4 @@
-module gitub.com/DefectDojo/ui-qa-experiment/example
+module github.com/DefectDojo/ui-qa-experiment
 
 go 1.16
 

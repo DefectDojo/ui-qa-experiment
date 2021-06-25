@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	ddl "github.com/mtesauro/dd-login"
+	ddl "github.com/DefectDojo/ui-qa-experiment/login"
 )
 
 // Good references:
@@ -19,7 +19,7 @@ import (
 func main() {
 	// Login and start a session with DefectDojo
 	var sess ddl.DDLogin
-	err := sess.SetAndLogin("https://demo.defectdojo.org/", "admin", "defectdojo@demo#appsec", true, true)
+	err := sess.SetAndLogin("https://demo.defectdojo.org/", "admin", "defectdojo@demo#appsec", true, false)
 	if err != nil {
 		fmt.Printf("Error logging into DefectDojo. Error was:\n\t%+v\n", err)
 	}
@@ -28,7 +28,6 @@ func main() {
 	p := *sess.Page
 
 	// We should now be on the main DefectDojo page aka /dashboard
-
 	// Click on the user side menu - #side-menu > li:nth-child(9) > a > i
 	p.MustElement("#side-menu > li:nth-child(9) > a > i").MustClick()
 
@@ -39,7 +38,6 @@ func main() {
 	p.MustElement("#base-content > div > div > div:nth-child(1) > div.panel-heading.tight > h3 > div > ul > li > a").MustClick()
 
 	// Fill out the User form
-	// Username - #id_username
 	p.MustElement("#id_username").MustInput("bross-da-boss")
 	p.MustElement("#id_first_name").MustInput("Bob")
 	p.MustElement("#id_last_name").MustInput("Ross")
