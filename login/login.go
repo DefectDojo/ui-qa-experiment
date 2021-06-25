@@ -89,7 +89,10 @@ func (l *DDLogin) NewSession() error {
 	//}
 	//l.Browser.Page = &p
 
-	//// Enter credentials into login page
+	// Wait for login page to load
+	l.Page.WaitLoad()
+
+	// Enter credentials into login page
 	l.Page.MustElement("#id_username").MustInput("admin")
 	l.Page.MustElement("#id_password").MustInput("defectdojo@demo#appsec")
 

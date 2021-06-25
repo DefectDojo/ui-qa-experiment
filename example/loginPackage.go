@@ -17,11 +17,16 @@ import (
 // https://pkg.go.dev/github.com/go-rod/rod#Mouse
 
 func main() {
+	// Start the timer
+	started := time.Now()
+
 	// Login and start a session with DefectDojo
 	var sess ddl.DDLogin
 	err := sess.SetAndLogin("https://demo.defectdojo.org/", "admin", "defectdojo@demo#appsec", true, false)
 	if err != nil {
 		fmt.Printf("Error logging into DefectDojo. Error was:\n\t%+v\n", err)
+		fmt.Println("FAILED - Add User")
+		os.Exit(1)
 	}
 
 	// Make a shorter name for sess.Page
@@ -37,8 +42,11 @@ func main() {
 	// Click on "Add user" - #base-content > div > div > div:nth-child(1) > div.panel-heading.tight > h3 > div > ul > li > a
 	p.MustElement("#base-content > div > div > div:nth-child(1) > div.panel-heading.tight > h3 > div > ul > li > a").MustClick()
 
+	// Wait for page to load
+	p.WaitLoad()
+
 	// Fill out the User form
-	p.MustElement("#id_username").MustInput("bross-da-boss")
+	p.MustElement("#id_username").MustInput("b.ross-da-boss")
 	p.MustElement("#id_first_name").MustInput("Bob")
 	p.MustElement("#id_last_name").MustInput("Ross")
 	p.MustElement("#id_email").MustInput("bob.ross@happytrees.com")
@@ -46,36 +54,63 @@ func main() {
 	// Click on the form's button
 	p.MustElement("#base-content > form > div > div > input").MustClick()
 
+	// Wait for page to load
+	p.WaitLoad()
+
+	// Wait a bit more for page to update
+	time.Sleep(time.Millisecond * 600)
+
 	// Get new user ID
 	pageInfo, err := p.Info()
 	if err != nil {
 		fmt.Printf("Error getting page info was:\n%+v\n", err)
+		fmt.Println("FAILED - Add User")
 		os.Exit(1)
 	}
 
-	fmt.Printf("Page info is:\n\t%+v\n", pageInfo)
-	// https://demo.defectdojo.org/user/add
+	// If the URL looks like this, something bad happened - https://demo.defectdojo.org/user/add
+	if strings.Contains(pageInfo.URL, "/user/add") {
+		fmt.Println("Creating the user unsuccessful - likely the user already exits")
+		fmt.Println("FAILED - Add User")
+		os.Exit(1)
+	}
 
+	// Extract the new user's ID from the page
 	uid, err := userFromURL(pageInfo.URL)
 	if err != nil {
 		fmt.Printf("Error getting the user's ID from the URL was:\n%+v\n", err)
+		fmt.Println("FAILED - Add User")
 		os.Exit(1)
 	}
 
-	fmt.Printf("Page info is:\n\t%+v\n", pageInfo)
+	//fmt.Printf("Page info is:\n\t%+v\n", pageInfo)
 	fmt.Printf("uid is %+v\n", uid)
 
-	// TODO: Set the user's password via Django admin
-	//admin := rod.New().MustConnect().MustPage("http://localhost:8888/admin/auth/user/2/change/")
-	// #side-menu > li:nth-child(2) > ul > li:nth-child(1) > a
-	// #nav-minimize-menu-li
-	//page.MustElement("#nav-minimize-menu-li").MustClick()
-	// #side-menu > li:nth-child(2) > a > span:nth-child(2)
-	//page.MustElement("#side-menu > li:nth-child(2) > a > span:nth-child(2)").MustClick()
-	//page.MustElement("#side-menu > li:nth-child(2) > ul > li:nth-child(1) > a").MustClick()
-	//page.MustElementR("a", "Add Product").MustClick()
+	// User created, now set the user's password via Django admin
 
-	time.Sleep(time.Hour)
+	// Click on the link to the Django Admin page:
+	p.MustElement("div.alert:nth-child(2) > a:nth-child(1)").MustClick()
+
+	// Wait for page to load
+	time.Sleep(time.Millisecond * 300)
+	//p.WaitLoad()
+
+	// Click on the form to set a password
+	p.MustElement(".field-password > div:nth-child(1) > div:nth-child(3) > a:nth-child(1)").MustClick()
+
+	// Wait for page to load
+	time.Sleep(time.Millisecond * 300)
+	//p.WaitLoad()
+
+	// Fill out the two password fields
+	p.MustElement("#id_password1").MustInput("p41nt3r$")
+	p.MustElement("#id_password2").MustInput("p41nt3r$")
+
+	// Click on change password button
+	p.MustElement(".default").MustClick()
+
+	fmt.Printf("PASS - Add User in %+v\n", time.Since(started))
+	os.Exit(0)
 }
 
 func userFromURL(rawURL string) (uint64, error) {
