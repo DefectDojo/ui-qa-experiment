@@ -13,6 +13,11 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+## Neovim stuff
 Session.vim
 .undodir
+
+## Names of compiled programs in this repo
 loginPackage
+test-pt01
