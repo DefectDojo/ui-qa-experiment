@@ -66,6 +66,6 @@ func main() {
 	// #base-content > form > div > div > input
 	p.MustElement("#base-content > form > div > div > input").MustClick()
 
-	fmt.Printf("PASS - TEST-U02 Added an active user in %+v\n", time.Since(started))
+	fmt.Printf("PASS - TEST-U02 Added an staff user in %+v\n", time.Since(started))
 
 }
