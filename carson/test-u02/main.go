@@ -26,6 +26,7 @@ func main() {
 	p := *sess.Page
 
 	// Go to the User's Page
+	// Iffy Selector
 	// #side-menu > li:nth-child(9) > a > i
 	p.MustElement("#side-menu > li:nth-child(9) > a > i").MustClick()
 
@@ -33,7 +34,7 @@ func main() {
 	p.WaitLoad()
 
 	// Click on wrench (top right)
-	// TODO: bad selector
+	// TODO: Iffy selector
 	// #dropdownMenu1 > span.fa.fa-wrench
 	p.MustElement("#dropdownMenu1 > span.fa.fa-wrench").MustClick()
 
@@ -63,6 +64,7 @@ func main() {
 	p.MustElement("#id_is_staff").MustClick()
 
 	// Click submit Button
+	// Iffy Selector
 	// #base-content > form > div > div > input
 	p.MustElement("#base-content > form > div > div > input").MustClick()
 
