@@ -25,15 +25,23 @@ func main() {
 	// Shorter name for sess.Page
 	p := *sess.Page
 
+	time.Sleep(time.Millisecond * 200)
+
 	// Hover over Side Menu Icon
 	// TODO: Iffy Selector
 	// #side-menu > li:nth-child(2) > a
 	p.MustElement("#side-menu > li:nth-child(2) > a").Hover()
 
+	time.Sleep(time.Millisecond * 200)
+	fmt.Println("Before the form.")
+
 	// Click on Product Types Listing on the side menu
 	// TODO: Bad Selector
 	// #side-menu > li:nth-child(2) > ul > li:nth-child(3) > a
 	p.MustElement("#side-menu > li:nth-child(2) > ul > li:nth-child(3) > a").MustClick()
+
+	fmt.Println("Made it to the form.")
+	time.Sleep(time.Millisecond * 200)
 
 	// Click on wrench icon
 	// TODO: Iffy Selector
@@ -58,6 +66,8 @@ func main() {
 
 	// Click on Submit Button
 	p.MustElement("input.btn").MustClick()
+
+	time.Sleep(time.Minute * 5)
 
 	fmt.Printf("PASS - pt01 Add Product Type in %+v\n", time.Since(started))
 
