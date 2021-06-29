@@ -34,10 +34,15 @@ func main() {
 
 	time.Sleep(time.Millisecond * 400)
 
-	// Click Add Product Type
+	// Hover over Add Product Type
 	// TODO: Bad Selector
 	// #side-menu > li:nth-child(2) > ul > li:nth-child(4) > a
 	p.MustElement("#side-menu > li:nth-child(2) > ul > li:nth-child(4) > a").Hover()
+
+	// Click Add Product Type
+	// TODO: Bad Selector
+	// #side-menu > li:nth-child(2) > ul > li:nth-child(4) > a
+	p.MustElement("#side-menu > li:nth-child(2) > ul > li:nth-child(4) > a").MustClick()
 
 	//Wait for the page to load
 	p.WaitLoad()
