@@ -69,6 +69,6 @@ func main() {
 
 	time.Sleep(time.Minute * 5)
 
-	fmt.Printf("PASS - pt01 Add Product Type in %+v\n", time.Since(started))
+	fmt.Printf("PASS - pt02 Add Product Type in %+v\n", time.Since(started))
 
 }
