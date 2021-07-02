@@ -45,8 +45,8 @@ func main() {
 
 	// Click on wrench icon
 	// TODO: Iffy Selector
-	// #dropdownMenu1 > span.fa.fa-wrench
-	p.MustElement("#dropdownMenu1 > span.fa.fa-wrench").MustClick()
+	// #dropdownMenu1
+	p.MustElement("#dropdownMenu1").MustClick()
 
 	// Click on "Add Product Type"
 	// TODO: Bad Selector
@@ -64,11 +64,15 @@ func main() {
 	// Description ID: #base-content > form > div:nth-child(3) > div > div > div.CodeMirror.cm-s-easymde.CodeMirror-wrap > div.CodeMirror-scroll > div.CodeMirror-sizer > div > div > div > div.CodeMirror-code > pre
 	p.MustElement(".CodeMirror > div:nth-child(1) > textarea:nth-child(1)").MustInput("Some Product Type Test Description")
 
+	fmt.Printf("Before Submit Button")
+	time.Sleep(time.Millisecond * 200)
+
 	// Click on Submit Button
 	p.MustElement("input.btn").MustClick()
 
-	time.Sleep(time.Minute * 5)
+	fmt.Printf("Made it passed Submit Button")
+	time.Sleep(time.Millisecond * 200)
 
-	fmt.Printf("PASS - pt02 Add Product Type in %+v\n", time.Since(started))
+	fmt.Printf("PASS - TEST-PT02 Added Product Type in %+v\n", time.Since(started))
 
 }
