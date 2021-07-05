@@ -59,6 +59,7 @@ func main() {
 	// Fill out form
 	// Name ID: #id_name
 	p.MustElement("#id_name").MustInput("Some Product Type")
+	fmt.Printf("Something else")
 
 	// TODO: Bad Selector
 	// Description ID: #base-content > form > div:nth-child(3) > div > div > div.CodeMirror.cm-s-easymde.CodeMirror-wrap > div.CodeMirror-scroll > div.CodeMirror-sizer > div > div > div > div.CodeMirror-code > pre
