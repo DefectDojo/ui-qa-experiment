@@ -33,14 +33,12 @@ func main() {
 	p.MustElement("#side-menu > li:nth-child(2) > a").Hover()
 
 	time.Sleep(time.Millisecond * 200)
-	fmt.Println("Before the form.")
 
 	// Click on Product Types Listing on the side menu
 	// TODO: Bad Selector
 	// #side-menu > li:nth-child(2) > ul > li:nth-child(3) > a
 	p.MustElement("#side-menu > li:nth-child(2) > ul > li:nth-child(3) > a").MustClick()
 
-	fmt.Println("Made it to the form.")
 	time.Sleep(time.Millisecond * 200)
 
 	// Click on wrench icon
@@ -59,19 +57,16 @@ func main() {
 	// Fill out form
 	// Name ID: #id_name
 	p.MustElement("#id_name").MustInput("Some Product Type")
-	fmt.Printf("Something else")
 
 	// TODO: Bad Selector
 	// Description ID: #base-content > form > div:nth-child(3) > div > div > div.CodeMirror.cm-s-easymde.CodeMirror-wrap > div.CodeMirror-scroll > div.CodeMirror-sizer > div > div > div > div.CodeMirror-code > pre
 	p.MustElement(".CodeMirror > div:nth-child(1) > textarea:nth-child(1)").MustInput("Some Product Type Test Description")
 
-	fmt.Printf("Before Submit Button")
 	time.Sleep(time.Millisecond * 200)
 
 	// Click on Submit Button
 	p.MustElement("input.btn").MustClick()
 
-	fmt.Printf("Made it passed Submit Button")
 	time.Sleep(time.Millisecond * 200)
 
 	fmt.Printf("PASS - TEST-PT02 Added Product Type in %+v\n", time.Since(started))
