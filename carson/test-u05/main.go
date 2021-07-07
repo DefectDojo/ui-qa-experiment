@@ -87,7 +87,7 @@ func main() {
 	// #id_is_superuser
 	p.MustElement("#id_is_superuser").MustClick()
 
-	// Click submit button
+	// Submit changes
 	// TODO: Iffy Selector
 	// #base-content > form > div > div > input
 	p.MustElement("#base-content > form > div > div > input").MustClick()
