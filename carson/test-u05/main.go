@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 	"time"
 
 	ddl "github.com/DefectDojo/ui-qa-experiment/login"
@@ -33,15 +34,32 @@ func main() {
 	// Wait for page to load
 	p.WaitLoad()
 
+	// If username column equals correct username, then click on three dots to edit that user
 	// Click on the three dots next to the user wanting to be changed
-	// Editing user "First Name 3"
-	// #dropdownMenuUser > b
-	p.MustElement("#dropdownMenuUser > b").MustClick()
+	// Admin ID: #users > tbody > tr:nth-child(2) > td:nth-child(4) > a
 
-	// Click on edit
+	row := 0
+	for j := 2; j <= 15; j++ {
+		fmt.Println(j)
+		selector := "#users > tbody > tr:nth-child(" + strconv.Itoa(j) + ") > td:nth-child(4) > a"
+		fmt.Println(selector)
+		name := p.MustElement(selector).MustText()
+		fmt.Println(name)
+		if name == "Test_Name" {
+			// Matched correct username
+			fmt.Println("We matched")
+			row = j
+			j = 15
+		}
+	}
+	fmt.Println("After the loop")
+	// #dropdownMenuUser
+	// #users > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)
+	userRow := "#users > tbody:nth-child(1) > tr:nth-child(" + strconv.Itoa(row) + ") > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)"
+	p.MustElement(userRow).MustClick()
+	// .open > ul:nth-child(2) > li:nth-child(6) > a:nth-child(1)
 	// #editUser
-	p.MustElement("#editUser").MustClick()
-	p.WaitLoad()
+	p.MustElement(".open > ul:nth-child(2) > li:nth-child(6) > a:nth-child(1)").MustClick()
 
 	// Fill out form
 	// Modify Username Information
@@ -61,11 +79,11 @@ func main() {
 	p.MustElement("#id_email").MustInput("emailaddress4@emailaddress.com")
 
 	// Select desired status (Active Status selected as default)
-	// Keep Staff status
+	// Select, Keep, or Remove Staff Status
 	// #id_is_staff
 	// p.MustElement("#id_is_staff").MustClick()
 
-	// Remove Super status
+	// Select, Keep, or Remove Super status (Selecting)
 	// #id_is_superuser
 	p.MustElement("#id_is_superuser").MustClick()
 
