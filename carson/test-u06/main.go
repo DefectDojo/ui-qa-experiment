@@ -63,6 +63,6 @@ func main() {
 	// #base-content > div > form > div > button
 	p.MustElement("#base-content > div > form > div > button").MustClick()
 
-	fmt.Printf("PASS - TEST-U05 Updated User's Information in %+v\n", time.Since(started))
+	fmt.Printf("PASS - TEST-U06 Updated User's Information in %+v\n", time.Since(started))
 
 }
