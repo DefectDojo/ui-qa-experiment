@@ -20,13 +20,13 @@ Session.vim
 
 ## Names of compiled programs in this repo
 loginPackage
-test-pt01
+test-pt01.exe
 test-u01.exe
 test-u02.exe
 test-u03.exe
 test-u04.exe
 test-u05.exe
-test-u06
+test-u06.exe
 test-pt02.exe
 test-Test-Hover-Command
 test-pt03.exe
