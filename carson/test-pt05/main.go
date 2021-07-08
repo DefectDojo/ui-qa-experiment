@@ -23,7 +23,6 @@ func main() {
 
 	}
 
-	// Brackets need to be fixed
 	// Shorter name for sess.Page
 	p := *sess.Page
 
@@ -44,7 +43,7 @@ func main() {
 	for j := 2; j <= 15; j++ {
 		fmt.Println(j)
 		// #product_types > tbody > tr:nth-child(3) > td:nth-child(2)
-		selector := "#product_types > tbody > tr:nth-child(" + strconv.Itoa(j) + ") > td:nth-child(2)
+		selector := "#product_types > tbody > tr:nth-child(" + strconv.Itoa(j) + ") > td:nth-child(2)"
 		fmt.Println(selector)
 		name := p.MustElement(selector).MustText()
 		fmt.Println(name)
@@ -57,26 +56,31 @@ func main() {
 	}
 	fmt.Println("After the loop")
 	// #dropdown
-	// #users > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)
-	// Need to get correct selector for "User Row line" (Below)
-	productRow := "#users > tbody:nth-child(1) > tr:nth-child(" + strconv.Itoa(row) + ") > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)"
+	// TODO: Bad Selector
+	// #product_types > tbody:nth-child(2) > tr:nth-child(" + strconv.Itoa(row) + ") > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)
+	productRow := "#product_types > tbody:nth-child(2) > tr:nth-child(" + strconv.Itoa(row) + ") > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)"
 	p.MustElement(productRow).MustClick()
-	// .open > ul:nth-child(2) > li:nth-child(6) > a:nth-child(1)
-	// #editUser
-	p.MustElement(".open > ul:nth-child(2) > li:nth-child(6) > a:nth-child(1)").MustClick()
+	// TODO: Bad Selector
+	// .open > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1)
+	p.MustElement(".open > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1)").MustClick()
 
 	time.Sleep(time.Millisecond * 200)
 
 	// Fill out form
 	// Name ID: #id_name
-	p.MustElement("#id_name").MustInput("A Product Type")
+	p.MustElement("#id_name").MustSelectAllText().MustInput("A Product Type")
 
 	// TODO: Bad Selector
-	// Description ID:#base-content > form > div:nth-child(3) > div > div > div.CodeMirror.cm-s-easymde.CodeMirror-wrap > div.CodeMirror-scroll > div.CodeMirror-sizer > div > div > div > div.CodeMirror-code > pre
-	p.MustElement("#base-content > form > div:nth-child(3) > div > div > div.CodeMirror.cm-s-easymde.CodeMirror-wrap > div.CodeMirror-scroll > div.CodeMirror-sizer > div > div > div > div.CodeMirror-code > pre").MustInput("Description of product type")
+	// Description ID:.CodeMirror > div:nth-child(1) > textarea:nth-child(1)
+	p.MustElement(".CodeMirror > div:nth-child(1) > textarea:nth-child(1)").MustSelectAllText().MustInput("Description of product type")
+
+	// Critical Product Type ID: #id_critical_product
+	p.MustElement("#id_critical_product").MustClick()
+	// Key Product Type ID: #id_key_product
+	//p.MustElement("#id_key_product").MustClick()
 
 	//Click Submit Button
-	// ID: #base-content > form > div:nth-child(6) > div > input
+	// ID: input.btn
 	p.MustElement("#base-content > form > div:nth-child(6) > div > input").MustClick()
 
 	fmt.Printf("PASS - TEST-PT05 Edited all elements for a Product Type in %+v\n", time.Since(started))
