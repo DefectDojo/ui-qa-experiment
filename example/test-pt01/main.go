@@ -26,11 +26,13 @@ func main() {
 
 	// Hover over Products on the side menu
 	// TODO: bad selector
+	// EXAMPLE - PR4797
 	// #side-menu > li:nth-child(2) > a
 	p.MustElement("#side-menu > li:nth-child(2) > a").Hover()
 
 	// Click on Add Product Type
 	// TODO: bad selector
+	// Example - PR4799
 	// #side-menu > li:nth-child(2) > ul:nth-child(2) > li:nth-child(4) > a:nth-child(1)
 	p.MustElement("#side-menu > li:nth-child(2) > ul:nth-child(2) > li:nth-child(4) > a:nth-child(1)").MustClick()
 
