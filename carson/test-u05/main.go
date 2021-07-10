@@ -40,43 +40,43 @@ func main() {
 
 	row := 0
 	for j := 2; j <= 15; j++ {
-		fmt.Println(j)
+		// fmt.Println(j)
 		selector := "#users > tbody > tr:nth-child(" + strconv.Itoa(j) + ") > td:nth-child(4) > a"
-		fmt.Println(selector)
+		// fmt.Println(selector)
 		name := p.MustElement(selector).MustText()
-		fmt.Println(name)
+		// fmt.Println(name)
 		if name == "Test_Name" {
 			// Matched correct username
-			fmt.Println("We matched")
 			row = j
 			j = 15
 		}
 	}
-	fmt.Println("After the loop")
 	// #dropdownMenuUser
 	// #users > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)
 	userRow := "#users > tbody:nth-child(1) > tr:nth-child(" + strconv.Itoa(row) + ") > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)"
 	p.MustElement(userRow).MustClick()
-	// .open > ul:nth-child(2) > li:nth-child(6) > a:nth-child(1)
+	// .open > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1)
 	// #editUser
-	p.MustElement(".open > ul:nth-child(2) > li:nth-child(6) > a:nth-child(1)").MustClick()
+	p.MustElement(".open > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1)").MustClick()
 
 	// Fill out form
 	// Modify Username Information
 	// Username ID: #id_username
-	p.MustElement("#id_username").MustInput("Username4")
+	p.MustElement("#id_username").MustSelectAllText().MustInput("Username4")
+
+	// p.MustElement("#id_username").MustInput("Username4")
 
 	// Modify First Name Information
 	// First Name ID: #id_first_name
-	p.MustElement("#id_first_name").MustInput("First Name4")
+	p.MustElement("#id_first_name").MustSelectAllText().MustInput("First Name4")
 
 	// Modify last Name Information
 	// Last Name ID: #id_last_name
-	p.MustElement("#id_last_name").MustInput("Last Name4")
+	p.MustElement("#id_last_name").MustSelectAllText().MustInput("Last Name4")
 
 	// Modify Email Address Information
 	// Email Address ID: #id_email
-	p.MustElement("#id_email").MustInput("emailaddress4@emailaddress.com")
+	p.MustElement("#id_email").MustSelectAllText().MustInput("emailaddress4@emailaddress.com")
 
 	// Select desired status (Active Status selected as default)
 	// Select, Keep, or Remove Staff Status
