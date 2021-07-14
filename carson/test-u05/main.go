@@ -29,6 +29,7 @@ func main() {
 	// Go to the User's Page
 	// TODO: Iffy Selector
 	// #side-menu > li:nth-child(9) > a > i
+	// New ID: #user-icon
 	p.MustElement("#side-menu > li:nth-child(9) > a > i").MustClick()
 
 	// Wait for page to load
@@ -51,12 +52,13 @@ func main() {
 			j = 15
 		}
 	}
-	// #dropdownMenuUser
 	// #users > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)
+	// New ID: #edit-icon
 	userRow := "#users > tbody:nth-child(1) > tr:nth-child(" + strconv.Itoa(row) + ") > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)"
 	p.MustElement(userRow).MustClick()
 	// .open > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1)
 	// #editUser
+	// New ID for Edit User? (row above)
 	p.MustElement(".open > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1)").MustClick()
 
 	// Fill out form
@@ -90,6 +92,7 @@ func main() {
 	// Submit changes
 	// TODO: Iffy Selector
 	// #base-content > form > div > div > input
+	// New ID: #submit-button
 	p.MustElement("#base-content > form > div > div > input").MustClick()
 
 	fmt.Printf("PASS - TEST-U05 Updated User's Information in %+v\n", time.Since(started))
