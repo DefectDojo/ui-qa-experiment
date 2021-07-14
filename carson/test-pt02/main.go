@@ -30,6 +30,7 @@ func main() {
 	// Hover over Side Menu Icon
 	// TODO: Iffy Selector
 	// #side-menu > li:nth-child(2) > a
+	// New ID: #product-side-menu
 	p.MustElement("#side-menu > li:nth-child(2) > a").Hover()
 
 	time.Sleep(time.Millisecond * 200)
@@ -37,6 +38,7 @@ func main() {
 	// Click on Product Types Listing on the side menu
 	// TODO: Bad Selector
 	// #side-menu > li:nth-child(2) > ul > li:nth-child(3) > a
+	// New ID: #all-product-types-list
 	p.MustElement("#side-menu > li:nth-child(2) > ul > li:nth-child(3) > a").MustClick()
 
 	time.Sleep(time.Millisecond * 200)
@@ -44,11 +46,13 @@ func main() {
 	// Click on wrench icon
 	// TODO: Iffy Selector
 	// #dropdownMenu1
+	// New ID: #wrench-icon
 	p.MustElement("#dropdownMenu1").MustClick()
 
 	// Click on "Add Product Type"
 	// TODO: Bad Selector
 	// #base-content > div > div > div:nth-child(1) > div.panel-heading.tight > h3 > div > ul > li > a
+	// New ID: #add-product-type
 	p.MustElement("#base-content > div > div > div:nth-child(1) > div.panel-heading.tight > h3 > div > ul > li > a").MustClick()
 
 	//Wait for the page to load
@@ -60,6 +64,7 @@ func main() {
 
 	// TODO: Bad Selector
 	// Description ID: #base-content > form > div:nth-child(3) > div > div > div.CodeMirror.cm-s-easymde.CodeMirror-wrap > div.CodeMirror-scroll > div.CodeMirror-sizer > div > div > div > div.CodeMirror-code > pre
+	// New ID: #description
 	p.MustElement(".CodeMirror > div:nth-child(1) > textarea:nth-child(1)").MustInput("Some Product Type Test Description")
 
 	time.Sleep(time.Millisecond * 200)
