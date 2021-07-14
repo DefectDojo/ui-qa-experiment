@@ -53,14 +53,16 @@ func main() {
 		}
 	}
 	fmt.Println("After the loop")
-	// #dropdownMenuUser
 	// #users > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)
+	// New ID: #edit-icon
 	userRow := "#users > tbody:nth-child(1) > tr:nth-child(" + strconv.Itoa(row) + ") > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)"
 	p.MustElement(userRow).MustClick()
 	// .open > ul:nth-child(2) > li:nth-child(6) > a:nth-child(1)
 	// #editUser
+	// New id for user edit? (row above)
 	p.MustElement(".open > ul:nth-child(2) > li:nth-child(6) > a:nth-child(1)").MustClick()
 	// #base-content > div > form > div > button
+	// New ID: #submit-button
 	p.MustElement("#base-content > div > form > div > button").MustClick()
 
 	fmt.Printf("PASS - TEST-U06 Updated User's Information in %+v\n", time.Since(started))
