@@ -30,6 +30,7 @@ func main() {
 	// Hover over Product Menu
 	// TODO: Iffy Selector
 	// #side-menu > li:nth-child(2) > a
+	// New ID: #product-menu
 	p.MustElement("#side-menu > li:nth-child(2) > a").Hover()
 
 	time.Sleep(time.Millisecond * 400)
@@ -37,11 +38,13 @@ func main() {
 	// Hover over Add Product Type
 	// TODO: Bad Selector
 	// #side-menu > li:nth-child(2) > ul > li:nth-child(4) > a
+	// New ID: #hover-product-type
 	p.MustElement("#side-menu > li:nth-child(2) > ul > li:nth-child(4) > a").Hover()
 
 	// Click Add Product Type
 	// TODO: Bad Selector
 	// #side-menu > li:nth-child(2) > ul > li:nth-child(4) > a
+	// New ID: #add-product-type
 	p.MustElement("#side-menu > li:nth-child(2) > ul > li:nth-child(4) > a").MustClick()
 
 	//Wait for the page to load
@@ -53,6 +56,7 @@ func main() {
 
 	// TODO: Bad Selector
 	// Description ID: ##base-content > form > div:nth-child(3) > div > div > div.CodeMirror.cm-s-easymde.CodeMirror-wrap > div.CodeMirror-scroll > div.CodeMirror-sizer > div > div > div > div.CodeMirror-code > pre
+	// New ID: #description
 	p.MustElement("#base-content > form > div:nth-child(3) > div > div > div.CodeMirror.cm-s-easymde.CodeMirror-wrap > div.CodeMirror-scroll > div.CodeMirror-sizer > div > div > div > div.CodeMirror-code > pre")
 
 	// Select Critical Product Type
@@ -62,6 +66,7 @@ func main() {
 	// Submit Form
 	// TODO: Bad Selector
 	// #base-content > form > div:nth-child(6) > div > input
+	// New ID: // New ID: #submit-button
 	p.MustElement("#base-content > form > div:nth-child(6) > div > input").MustClick()
 
 	fmt.Printf("PASS - TEST-PT03 Added a Critical Product Type in %+v\n", time.Since(started))
