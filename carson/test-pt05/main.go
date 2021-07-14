@@ -29,6 +29,7 @@ func main() {
 	// Hover over Products on the side menu
 	// TODO: bad selector
 	// #side-menu > li:nth-child(2) > a
+	// New ID: #product-side-menu
 	p.MustElement("#side-menu > li:nth-child(2) > a").Hover()
 
 	time.Sleep(time.Millisecond * 200)
@@ -36,6 +37,7 @@ func main() {
 	// Click on Product Types Listing on the side menu
 	// TODO: Bad Selector
 	// #side-menu > li:nth-child(2) > ul > li:nth-child(3) > a
+	// New ID: #all-product-types-list
 	p.MustElement("#side-menu > li:nth-child(2) > ul > li:nth-child(3) > a").MustClick()
 
 	// Edit correct Product Type
@@ -72,16 +74,18 @@ func main() {
 
 	// TODO: Bad Selector
 	// Description ID:.CodeMirror > div:nth-child(1) > textarea:nth-child(1)
+	// New ID: #description
 	p.MustElement(".CodeMirror > div:nth-child(1) > textarea:nth-child(1)").MustSelectAllText().MustInput("Description of product type")
 
 	// Critical Product Type ID: #id_critical_product
 	p.MustElement("#id_critical_product").MustClick()
 	// Key Product Type ID: #id_key_product
-	//p.MustElement("#id_key_product").MustClick()
+	// p.MustElement("#id_key_product").MustClick()
 
 	//Click Submit Button
-	// ID: input.btn
+	// New ID: #input.btn
 	p.MustElement("#base-content > form > div:nth-child(6) > div > input").MustClick()
+	// Current ID (row above)
 
 	fmt.Printf("PASS - TEST-PT05 Edited all elements for a Product Type in %+v\n", time.Since(started))
 
