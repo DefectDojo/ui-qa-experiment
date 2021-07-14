@@ -28,6 +28,7 @@ func main() {
 	// Go to the User's Page
 	// TODO: Iffy Selector
 	// #side-menu > li:nth-child(9) > a > i
+	// New ID: #user-icon
 	p.MustElement("#side-menu > li:nth-child(9) > a > i").MustClick()
 
 	// Wait for page to load
@@ -36,11 +37,13 @@ func main() {
 	// Click on wrench (top right)
 	// TODO: Iffy selector
 	// #dropdownMenu1 > span.fa.fa-wrench
+	// New ID: #wrench-icon
 	p.MustElement("#dropdownMenu1 > span.fa.fa-wrench").MustClick()
 
 	// Click on New User
 	// TODO: bad selector
 	// #base-content > div > div > div:nth-child(1) > div.panel-heading.tight > h3 > div > ul > li > a
+	// New ID: #new-user-icon
 	p.MustElement("#base-content > div > div > div:nth-child(1) > div.panel-heading.tight > h3 > div > ul > li > a").MustClick()
 
 	// Wait for page to load
@@ -66,6 +69,7 @@ func main() {
 	// Click submit Button
 	// Iffy Selector
 	// #base-content > form > div > div > input
+	// New ID: #submit-button
 	p.MustElement("#base-content > form > div > div > input").MustClick()
 
 	fmt.Printf("PASS - TEST-U03 Added a super user in %+v\n", time.Since(started))
