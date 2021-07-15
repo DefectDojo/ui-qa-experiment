@@ -65,6 +65,6 @@ func main() {
 	// New ID: #submit-button
 	p.MustElement("#base-content > div > form > div > button").MustClick()
 
-	fmt.Printf("PASS - TEST-U06 Updated User's Information in %+v\n", time.Since(started))
+	fmt.Printf("PASS - TEST-U06 Removed user in %+v\n", time.Since(started))
 
 }
