@@ -28,7 +28,7 @@ func main() {
 	// Go to the User's Page
 	// TODO: Iffy Selector
 	// #side-menu > li:nth-child(9) > a > i
-	// New ID: #user-icon
+	// New ID: #user-side-menu
 	p.MustElement("#side-menu > li:nth-child(9) > a > i").MustClick()
 
 	// Wait for page to load
@@ -43,7 +43,7 @@ func main() {
 	// Click on New User
 	// TODO: bad selector
 	// #base-content > div > div > div:nth-child(1) > div.panel-heading.tight > h3 > div > ul > li > a
-	// New ID: #new-user-icon
+	// New ID: #add-new-user-button
 	p.MustElement("#base-content > div > div > div:nth-child(1) > div.panel-heading.tight > h3 > div > ul > li > a").MustClick()
 
 	// Wait for page to load

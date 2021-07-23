@@ -33,6 +33,7 @@ func main() {
 
 	// Click on groups
 	// #side-menu > li:nth-child(9) > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1)
+	// New ID: #group-listings
 	p.MustElement("#side-menu > li:nth-child(9) > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1)").MustClick()
 
 	// Click wrench icon
@@ -41,6 +42,7 @@ func main() {
 
 	// Click on add new group
 	// .dropdown-menu-right > li:nth-child(1) > a:nth-child(1)
+	// New Id: #add-new-group
 	p.MustElement(".dropdown-menu-right > li:nth-child(1) > a:nth-child(1)").MustClick()
 
 	// Fill out form

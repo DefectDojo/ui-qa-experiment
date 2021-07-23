@@ -39,7 +39,7 @@ func main() {
 	// Click on all products
 	// TODO: Bad Selector
 	// #side-menu > li:nth-child(2) > ul:nth-child(2) > li:nth-child(1) > a:nth-child(1)
-	// New ID: #all-product-listings
+	// New ID: #all-products-list
 	p.MustElement("#side-menu > li:nth-child(2) > ul:nth-child(2) > li:nth-child(1) > a:nth-child(1)").MustClick()
 
 	// Wait for the page to load
@@ -64,6 +64,7 @@ func main() {
 	fmt.Println("After the loop")
 	// Click on edit button for wanted product
 	// TODO: Bad Selector
+	// New ID: #product-options
 	// tr.odd:nth-child(3) > td:nth-child(" + strconv.Itoa(row) + ") > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > b:nth-child(1)
 	productRow := "tr.odd:nth-child(3) > td:nth-child(" + strconv.Itoa(row) + ") > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > b:nth-child(1)"
 	p.MustElement(productRow).MustClick()

@@ -70,6 +70,7 @@ func main() {
 	time.Sleep(time.Millisecond * 200)
 
 	// Click on Submit Button
+	// Will change to new selector
 	p.MustElement("input.btn").MustClick()
 
 	time.Sleep(time.Millisecond * 200)

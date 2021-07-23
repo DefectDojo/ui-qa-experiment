@@ -60,10 +60,12 @@ func main() {
 	// #dropdown
 	// TODO: Bad Selector
 	// #product_types > tbody:nth-child(2) > tr:nth-child(" + strconv.Itoa(row) + ") > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)
+	// New ID: #product-type-options
 	productRow := "#product_types > tbody:nth-child(2) > tr:nth-child(" + strconv.Itoa(row) + ") > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)"
 	p.MustElement(productRow).MustClick()
 	// TODO: Bad Selector
 	// .open > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1)
+	// New ID: #edit-button
 	p.MustElement(".open > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1)").MustClick()
 
 	time.Sleep(time.Millisecond * 200)
@@ -83,7 +85,8 @@ func main() {
 	// p.MustElement("#id_key_product").MustClick()
 
 	//Click Submit Button
-	// New ID: #input.btn
+	// #base-content > form > div:nth-child(6) > div > input
+	// New ID: #submit-button
 	p.MustElement("#base-content > form > div:nth-child(6) > div > input").MustClick()
 	// Current ID (row above)
 

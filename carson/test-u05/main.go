@@ -53,11 +53,11 @@ func main() {
 		}
 	}
 	// #users > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)
-	// New ID: #edit-icon
+	// New ID: #user-option-button
 	userRow := "#users > tbody:nth-child(1) > tr:nth-child(" + strconv.Itoa(row) + ") > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1)"
 	p.MustElement(userRow).MustClick()
 	// .open > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1)
-	// #editUser
+	// #edit-user-button
 	// New ID for Edit User? (row above)
 	p.MustElement(".open > ul:nth-child(2) > li:nth-child(2) > a:nth-child(1)").MustClick()
 

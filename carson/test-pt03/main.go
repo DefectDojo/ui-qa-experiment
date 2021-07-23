@@ -30,7 +30,7 @@ func main() {
 	// Hover over Product Menu
 	// TODO: Iffy Selector
 	// #side-menu > li:nth-child(2) > a
-	// New ID: #product-menu
+	// New ID: #product-side-menu
 	p.MustElement("#side-menu > li:nth-child(2) > a").Hover()
 
 	time.Sleep(time.Millisecond * 400)
@@ -38,7 +38,7 @@ func main() {
 	// Hover over Add Product Type
 	// TODO: Bad Selector
 	// #side-menu > li:nth-child(2) > ul > li:nth-child(4) > a
-	// New ID: #hover-product-type
+	// New ID: #add-product-type
 	p.MustElement("#side-menu > li:nth-child(2) > ul > li:nth-child(4) > a").Hover()
 
 	// Click Add Product Type
