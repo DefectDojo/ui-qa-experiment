@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strconv"
 	"time"
 
 	ddl "github.com/DefectDojo/ui-qa-experiment/login"
@@ -59,31 +58,31 @@ func main() {
 	// row := 0
 	//	for j := 2; j <= 15; j++ {
 	//	fmt.Println(j)
-		// tr.odd:nth-child(" + strconv.Itoa(j) + ") > td:nth-child(2) > a:nth-child(1) > b:nth-child(1)
+	// tr.odd:nth-child(" + strconv.Itoa(j) + ") > td:nth-child(2) > a:nth-child(1) > b:nth-child(1)
 	//	selector := "tr.odd:nth-child(" + strconv.Itoa(j) + ") > td:nth-child(2) > a:nth-child(1) > b:nth-child(1)"
 	//	fmt.Println(selector)
 	//	name := p.MustElement(selector).MustText()
 	//	fmt.Println(name)
 	//	if name == "Test Product" {
-			// Matched correct username
+	// Matched correct username
 	//		fmt.Println("We matched")
 	//		row = j
 	//		j = 15
-		}
-	}
+	//		}
+	//	}
 	//fmt.Println("After the loop")
 	// Click on edit button for wanted product
 	// TODO: Bad Selector
 	// New ID: #product-options
 	// tr.odd:nth-child(3) > td:nth-child(" + strconv.Itoa(row) + ") > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > b:nth-child(1)
-//	productRow := "tr.odd:nth-child(3) > td:nth-child(" + strconv.Itoa(row) + ") > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > b:nth-child(1)"
+	//	productRow := "tr.odd:nth-child(3) > td:nth-child(" + strconv.Itoa(row) + ") > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > b:nth-child(1)"
 	//p.MustElement(productRow).MustClick()
 
 	// Click on add new engagement
 	// TODO: Bad Selector
 	// .open > ul:nth-child(2) > li:nth-child(5) > a:nth-child(1)
 	// New ID: #add-new-engagement
-//	p.MustElement(".open > ul:nth-child(2) > li:nth-child(5) > a:nth-child(1)").MustClick()
+	//	p.MustElement(".open > ul:nth-child(2) > li:nth-child(5) > a:nth-child(1)").MustClick()
 
 	// Fill out name
 	// #id_name
@@ -95,8 +94,8 @@ func main() {
 	p.MustElement(".CodeMirror > div:nth-child(1) > textarea:nth-child(1)").MustInput("test engagement description")
 
 	// Fill out target start date
-    // #id_target_start
-    p.MustElement("#id_target_start").MustInput("2021-07-14")
+	// #id_target_start
+	p.MustElement("#id_target_start").MustInput("2021-07-14")
 
 	// Fill out target end date
 	// #id_target_end
