@@ -81,7 +81,7 @@ func main() {
 	// TODO: Bad Selector
 	// .open > ul:nth-child(2) > li:nth-child(5) > a:nth-child(1)
 	// New ID: #add-new-engagement
-	p.MustElement(".open > ul:nth-child(2) > li:nth-child(5) > a:nth-child(1)").MustClick()
+	// p.MustElement(".open > ul:nth-child(2) > li:nth-child(5) > a:nth-child(1)").MustClick()
 
 	// Fill out form
 	// Fill out name
