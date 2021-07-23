@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"strconv"
 	"time"
 
 	ddl "github.com/DefectDojo/ui-qa-experiment/login"
@@ -46,27 +45,37 @@ func main() {
 	p.WaitLoad()
 
 	// Insert loop code
-	row := 0
-	for j := 2; j <= 15; j++ {
-		fmt.Println(j)
-		// tr.odd:nth-child(" + strconv.Itoa(j) + ") > td:nth-child(2) > a:nth-child(1) > b:nth-child(1)
-		selector := "tr.odd:nth-child(" + strconv.Itoa(j) + ") > td:nth-child(2) > a:nth-child(1) > b:nth-child(1)"
-		fmt.Println(selector)
-		name := p.MustElement(selector).MustText()
-		fmt.Println(name)
-		if name == "Test Product" {
-			// Matched correct username
-			fmt.Println("We matched")
-			row = j
-			j = 15
-		}
-	}
-	fmt.Println("After the loop")
+	//	row := 0
+	//	for j := 2; j <= 15; j++ {
+	//		fmt.Println(j)
+	// tr.odd:nth-child(" + strconv.Itoa(j) + ") > td:nth-child(2) > a:nth-child(1) > b:nth-child(1)
+	//		selector := "tr.odd:nth-child(" + strconv.Itoa(j) + ") > td:nth-child(2) > a:nth-child(1) > b:nth-child(1)"
+	//		fmt.Println(selector)
+	//		name := p.MustElement(selector).MustText()
+	//		fmt.Println(name)
+	//		if name == "Test Product" {
+	// Matched correct username
+	//			fmt.Println("We matched")
+	//			row = j
+	//			j = 15
+	//		}
+	//	}
+	//fmt.Println("After the loop")
 	// Click on edit button for wanted product
 	// TODO: Bad Selector
 	// tr.odd:nth-child(3) > td:nth-child(" + strconv.Itoa(row) + ") > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > b:nth-child(1)
-	productRow := "tr.odd:nth-child(3) > td:nth-child(" + strconv.Itoa(row) + ") > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > b:nth-child(1)"
-	p.MustElement(productRow).MustClick()
+	//productRow := "tr.odd:nth-child(3) > td:nth-child(" + strconv.Itoa(row) + ") > div:nth-child(1) > div:nth-child(1) > a:nth-child(1) > b:nth-child(1)"
+	//	p.MustElement(productRow).MustClick()
+
+	// Click on first product
+	// tr.odd:nth-child(1) > td:nth-child(2) > a:nth-child(1)
+	p.MustElement("tr.odd:nth-child(1) > td:nth-child(2) > a:nth-child(1)").MustClick()
+
+	// Click on engagement tab
+	p.MustElement("li.dropdown:nth-child(4) > a:nth-child(1) > span:nth-child(2)").MustClick()
+
+	// Click Add new interactive engagement
+	p.MustElement("li.dropdown:nth-child(4) > ul:nth-child(2) > li:nth-child(3) > a:nth-child(1)").MustClick()
 
 	// Click on add new engagement
 	// TODO: Bad Selector
@@ -98,11 +107,11 @@ func main() {
 
 	// Fill out tracker (I don't know what this is for)
 	// #id_tracker
-	// p.MustElement("#id_tracker").MustInput("")
+	p.MustElement("#id_tracker").MustInput("dojo-1247")
 
 	// Fill out Test Strategy URL
 	// #id_test_strategy
-	p.MustElement("#id_test_strategy").MustInput("randomurl.com")
+	p.MustElement("#id_test_strategy").MustInput("https:/randomurl.com")
 
 	// Select the correct status (I don't know how to do)
 	// #id_status
@@ -113,13 +122,14 @@ func main() {
 	// TODO: Iffy Selector
 	// #id_source_code_management_uri
 	// New ID: #repo-link-insert
-	p.MustElement("#id_source_code_management_uri").MustInput("insertrepolink")
+	p.MustElement("#id_source_code_management_uri").MustInput("https://github.com/DefectDojo/ui-qa-experiment.git")
 
 	// Fill out appropriate tags
 	// TODO: Iffy Selector
 	// .select2-search__field
 	// New ID: #tag-field
-	p.MustElement(".select2-search__field").MustInput("tag1,")
+	p.MustElement(".select2-search__field").MustInput("tag1\n")
+	//p.MustElement(".select2-search__field").MustInput("tag1,")
 	// Hit enter button
 	// p.MustElement(".select2-search__field")
 
