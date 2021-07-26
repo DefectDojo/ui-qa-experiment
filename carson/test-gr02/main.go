@@ -55,7 +55,7 @@ func main() {
 	fmt.Println("After the loop")
 	// Edit correct Group
 	// #groups > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1) > b:nth-child(1)
-	groupRow := "#groups > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(" + strconv.Itoa(row) + ") > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1) > b:nth-child(1)"
+	groupRow := "#groups > tbody:nth-child(1) > tr:nth-child(" + strconv.Itoa(row) + ") > td:nth-child(1) > ul:nth-child(1) > li:nth-child(1) > a:nth-child(1) > b:nth-child(1)"
 	p.MustElement(groupRow).MustClick()
 
 	// Click on edit
