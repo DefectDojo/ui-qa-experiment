@@ -64,11 +64,11 @@ func main() {
 
 	// Fill out name
 	// #id_name
-	p.MustElement("#id_name").MustInput("Test Group 2")
+	p.MustElement("#id_name").MustSelectAllText().MustInput("Test Group 2")
 
 	// Fill out description
 	// .CodeMirror > div:nth-child(1) > textarea:nth-child(1)
-	p.MustElement(".CodeMirror > div:nth-child(1) > textarea:nth-child(1)").MustInput("Description for Test Group 2")
+	p.MustElement(".CodeMirror > div:nth-child(1) > textarea:nth-child(1)").MustSelectAllText().MustInput("Description for Test Group 2")
 
 	// Click on submit button
 	// input.btn
