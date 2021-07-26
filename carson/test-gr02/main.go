@@ -69,7 +69,6 @@ func main() {
 	// Fill out description
 	// .CodeMirror > div:nth-child(1) > textarea:nth-child(1)
 	p.MustElement(".CodeMirror > div:nth-child(1) > textarea:nth-child(1)").MustSelectAllText().MustInput("Description for Test Group 2")
-	time.Sleep(time.Minute * 5)
 
 	// Click on submit button
 	// input.btn
